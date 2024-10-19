@@ -1,0 +1,4 @@
+# shuttle-template-axum gitignore configuration
+/target
+.shuttle*
+Secrets*.toml
