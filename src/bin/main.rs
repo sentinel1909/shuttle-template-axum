@@ -2,8 +2,8 @@
 
 // dependencies
 use shuttle_runtime::Error;
-use shuttle_template_axum_lib::service::ShuttleTemplateAxum;
 use shuttle_template_axum_lib::{build, get_subscriber, init_subscriber};
+use shuttle_template_axum_lib::service::ShuttleTemplateAxum;
 
 // main function; configures tracing, builds the app router, starts the service
 #[shuttle_runtime::main]

@@ -1,0 +1,13 @@
+# Shuttle Configuration for the shuttle-template-axum repo
+
+name = "shuttle-template-axum"
+
+[deploy]
+include = [
+  "public/*"
+]
+
+[build]
+assets = [
+  "public/*"
+]

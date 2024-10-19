@@ -1,6 +1,6 @@
 [package]
 name = "shuttle-template-axum-server"
-version = "0.1.0"
+version = "0.22.0"
 edition = "2021"
 description = "A template for an Axum web server, hosted on Shuttle"
 readme = "README.md"
