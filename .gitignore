@@ -10,3 +10,4 @@ target
 # Shuttle configuration and environment variables
 .shuttle*
 Secrets*.toml
+/target
