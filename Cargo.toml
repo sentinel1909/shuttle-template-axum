@@ -1,6 +1,6 @@
 [package]
 name = "shuttle-template-axum-server"
-version = "0.4.0"
+version = "0.5.0"
 edition = "2021"
 description = "A template for an Axum web server, hosted on Shuttle"
 readme = "README.md"
@@ -21,7 +21,7 @@ axum = "0.7.7"
 http = "1.1.0"
 shuttle-axum = "0.48.0"
 shuttle-runtime = { version = "0.48.0", default-features = false  }
-thiserror = "2.0.0"
+thiserror = "2.0.1"
 tokio = { version = "1", features = [ "net" ] }
 tower = "0.5.1"
 tower-http = { version = "0.6.1", features = [ "cors", "fs", "normalize-path", "request-id", "trace", "util" ] }
