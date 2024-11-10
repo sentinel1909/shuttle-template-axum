@@ -12,9 +12,7 @@ struct HealthCheckResponse {
 
 // health check handler; returns 200 OK and an empty body
 pub async fn health_check() -> impl IntoResponse {
-    let response = HealthCheckResponse {
-        status: "ok"
-    }; 
-    
-   (StatusCode::OK, Json(response))
+    let response = HealthCheckResponse { status: "ok" };
+
+    (StatusCode::OK, Json(response))
 }

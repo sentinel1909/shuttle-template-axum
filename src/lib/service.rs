@@ -1,7 +1,7 @@
 // src/lib/service.rs
 
 // dependencies
-use crate::routes::health_check;
+use crate::routes::{health_check, openapi};
 use crate::telemetry::MakeRequestUuid;
 use axum::{http::HeaderName, routing::get, Router};
 use shuttle_runtime::{Error, Service};
@@ -40,6 +40,7 @@ impl ShuttleTemplateAxum {
         let x_request_id = HeaderName::from_static("x-request-id");
         let api_routes = Router::new()
             .route("/health_check", get(health_check))
+            .route("/docs/openapi.json", get(openapi))
             .layer(cors)
             .layer(
                 ServiceBuilder::new()

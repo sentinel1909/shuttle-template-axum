@@ -21,7 +21,10 @@ impl IntoResponse for ApiError {
     fn into_response(self) -> Response {
         let (status, msg) = match &self {
             ApiError::BadRequest(err) => (StatusCode::BAD_REQUEST, format!("Bad Request: {}", err)),
-            ApiError::Internal(err) => (StatusCode::INTERNAL_SERVER_ERROR, format!("Internal Server Error: {}", err)),
+            ApiError::Internal(err) => (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                format!("Internal Server Error: {}", err),
+            ),
             ApiError::NotFound(err) => (StatusCode::NOT_FOUND, format!("Not Found: {}", err)),
         };
         tracing::error!("Error occurred: {:?}", self);
