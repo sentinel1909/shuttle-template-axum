@@ -1842,6 +1842,7 @@ version = "0.5.0"
 dependencies = [
  "axum 0.7.7",
  "http 1.1.0",
+ "serde",
  "shuttle-axum",
  "shuttle-runtime",
  "thiserror 2.0.1",
