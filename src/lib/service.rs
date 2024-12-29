@@ -4,8 +4,9 @@
 use crate::routes::{health_check, openapi};
 use crate::telemetry::MakeRequestUuid;
 use axum::{http::HeaderName, routing::get, Router};
-use shuttle_runtime::{Error, Service};
+use shuttle_runtime::{async_trait, Error, Service};
 use std::net::SocketAddr;
+use tokio::net::TcpListener;
 use tower::layer::Layer;
 use tower::ServiceBuilder;
 use tower_http::{
@@ -58,15 +59,21 @@ impl ShuttleTemplateAxum {
         // combine the api and asset routes to make the complete router
         Router::new().nest_service("/api", api_router)
     }
+
+    // utility function to faciliate local testing
+    pub async fn run_until_stopped(self, addr: SocketAddr) {
+        let listener = TcpListener::bind(addr).await.unwrap();
+        axum::serve(listener, self.app_router).await.unwrap();
+    }
 }
 
-// implement the Shuttle Service trait ont he NasaImageryViewerService type
-#[shuttle_runtime::async_trait]
+// implement the Shuttle Service trait the ShuttleTemplateAxum type
+#[async_trait]
 impl Service for ShuttleTemplateAxum {
     async fn bind(self, addr: SocketAddr) -> Result<(), Error> {
         let router = self.app_router;
 
-        axum::serve(tokio::net::TcpListener::bind(addr).await?, router).await?;
+        axum::serve(TcpListener::bind(addr).await?, router).await?;
 
         Ok(())
     }
