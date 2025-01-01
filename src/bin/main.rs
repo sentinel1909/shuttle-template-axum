@@ -10,7 +10,7 @@ use shuttle_template_axum_lib::{get_subscriber, init_subscriber};
 async fn main() -> Result<ShuttleTemplateAxum, Error> {
     // initialize tracing
     let subscriber = get_subscriber(
-        "shuttle-template-vanilla".into(),
+        "shuttle-template-axum".into(),
         "info".into(),
         std::io::stdout,
     );
